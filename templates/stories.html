@@ -1,0 +1,15 @@
+{% load static %}
+<div class="akea-footer-recent-post-bar " id=akea-footer-recent-post-bar>
+    <div class=akea-footer-recent-post-bar-close><i class=icon_minus-06></i></div>
+    <div class="akea-footer-recent-post-bar-container akea-container clearfix">
+        <h3 class="akea-footer-recent-post-bar-title">My New Stories</h3>
+        <div class="akea-recent-post-bar-wrap clearfix">
+            {% for char in posts %}
+            <div class=akea-recent-post-bar-item>
+                <div class=akea-recent-post-bar-shadow></div>
+                <a href="{% url 'single' char.id %}"><img src={{char.image.url}} alt width=150 height=150 title={{char.title}}></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

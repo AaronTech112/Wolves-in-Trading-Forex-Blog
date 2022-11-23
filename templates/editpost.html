@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/2f4cba9fe1.js" crossorigin="anonymous"></script>
+        <title>Document</title>
+    </head>
+    <body style="box-sizing:border-box; background-color: azure;">
+        <div class="mx-auto d-block text-center">
+            <h1> Edit Post</h1>
+        </div>
+        <form action="" method="POST" enctype = "multipart/form-data" class="d-block mx-auto"
+        style="width:100%; display: flex; align-items: center; justify-content: center;" >
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </body>
+</html>

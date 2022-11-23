@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/2f4cba9fe1.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body style="box-sizing:border-box; background-color: azure;">
+    <div class="p-3 text-center" style=" width: 100%  " >
+        <img src="{{author.profile.url}}" class="rounded-circle mx-auto img-fluid shadow mb-2 hover fade show" alt="" 
+        style="width: 180px; height: 170px; border-width: 2px; border-style: solid; border-color: blue; "> <br>
+        <h5 class="d-block text-center mb-2">{{author.name}}</h5>
+        <!-- <button class="btn btn-outline text-center text-white bg-primary" type="submit"> Edit Profile</button> -->
+        <button type="button" class="btn btn-primary fa-bold"  class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+            Edit Profile
+        </button>
+    </div>
+    <div class="p-3 mb-4 mx-auto" style="width: 100%;" >
+        <a href="{% url 'uploadpost' %}"><button type="button" class="btn btn-primary shadow mb-2"style="float:right;">Uplaod Post</button></a>     
+    </div>
+    <div class="container-fluid p-3 text-center" style=" width: 100%;">
+        <h1 class="text-center mx-auto">Recent Post</h1>
+    </div>
+    {% for char in posts %}
+    <div class="p-3 mb-3 mx-auto shadow " style="width: 80%; background-color: rgb(205, 205, 205);" >
+        <small>Created {{char.created}}</small>
+        <small class="text-dark"  style="float:right; font-weight: bold;">Category : {{char.category}}</small>
+        <div class="card shadow">
+            <a href="{% url 'single' char.id %}"><img class="card-img-top" src="{{char.image.url}}" alt="Title"></a>
+            <div class="card-body">
+                <h4 class="card-title"  style="margin-left: 10px;">{{char.title}}</h4>
+                <h5 class="card-title">{{char.subtitle}}</h5>
+                <p class="card-text">{{char.body}}</p>
+            </div>
+            <a href="{% url 'editpost' char.id %}"><i class="fa-solid fa-pen-to-square fa-xl" style=" display:block; float: right;"></i></a>
+        </div>
+        <small class="text-center d-block mx-auto" style="font-weight:bolder;">Comments : {{char.comment_set.all.count}} </small>   
+    </div>
+    {% endfor %}
+
+
+
+
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title" id="exampleModalToggleLabel">Edit Profile</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+              <form method = "POST" class="form-floating mb-3"  enctype = "multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="name">Name </label>
+                  <input type="text" class="form-control" name="name" id="name" placeholder={{form.name}}
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email">Email </label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder={{form.email}}
+                  </div>
+                <div class="mb-3">
+                  <label enctype = "multipart/form-data" for="profile" class="form-label">Profile Picture</label>
+                  <input type="file" class="form-control" name="profile" id="" placeholder="Profile Picture" aria-describedby="fileHelpId">
+                  <div id="fileHelpId" class="form-text">{{form.profile}}</div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+    
+    
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang=en-US class=no-js>
+
+<!-- Mirrored from max-themes.net/demos/akea/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Oct 2022 12:27:13 GMT -->
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+
+    <title>Akea &#8211; Minimal Blog HTML Template</title>
+
+
+    <link rel=stylesheet href="{% static 'plugins/goodlayers-core/plugins/combine/style.css' %}" type=text/css media=all>
+    <link rel=stylesheet href="{% static 'plugins/goodlayers-core/include/css/page-builder.css' %}" type=text/css media=all>
+    <link rel=stylesheet href="{% static 'plugins/revslider/public/assets/css/settings.html' %}" type=text/css media=all>
+    <link rel=stylesheet href="{% static 'plugins/zilla-likes/styles/zilla-likes.css' %}" type=text/css media=all>
+    <link rel=stylesheet href="{% static 'css/style-core.css' %}" type=text/css media=all>
+    <link rel=stylesheet href="{% static 'css/single.min.css' %}" type=text/css media=all>
+    <link rel=stylesheet href="{% static 'css/akea-style-custom.css' %}" type=text/css media=all>
+
+    <link rel=stylesheet href='https://fonts.googleapis.com/css?family=Poppins%3A400%2C500%2C600%2C700%2C800' type=text/css media=all>
+    <link rel=stylesheet href='https://fonts.googleapis.com/css?family=Montserrat' type=text/css media=all>
+    <link rel=stylesheet href='https://fonts.googleapis.com/css?family=PT+Serif' type=text/css media=all>
+    <link rel=stylesheet href='https://fonts.googleapis.com/css?family=Open+Sans' type=text/css media=all>
+    <link rel=stylesheet href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPT+Serif%3Aregular%2Citalic%2C700%2C700italic%7COpen+Sans%3A300%2C300italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic&amp;subset=latin%2Clatin-ext%2Cdevanagari%2Ccyrillic-ext%2Cvietnamese%2Ccyrillic%2Cgreek-ext%2Cgreek' type=text/css media=all>
+
+</head>
+
+<body>
+
+    {% include  'navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <script src={% static 'js/jquery/jquery.js' %}></script>
+    <script src={% static 'js/jquery/jquery-migrate.min.js' %}></script>
+    <script>
+        var zilla_likes = {
+            "ajaxurl": ""
+        };
+    </script>
+    <script src={% static 'plugins/zilla-likes/scripts/zilla-likes.js' %}></script>
+    <script src={% static 'plugins/goodlayers-core/plugins/combine/script.js' %}></script>
+    <script>
+        var gdlr_core_pbf = {
+            "admin": "",
+            "video": {
+                "width": "640",
+                "height": "360"
+            },
+            "ajax_url": "#"
+        };
+    </script>
+    <script src={% static 'plugins/goodlayers-core/include/js/page-builder.js' %}></script>
+    <script src={% static 'js/jquery/ui/effect.min.js' %}></script>
+    <script src={% static 'js/script-core.js' %}></script>
+
+  </body>
+</html>

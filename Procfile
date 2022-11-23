@@ -1,0 +1,1 @@
+web gunicorn wolvesblog.wsgi:application --log-file -
