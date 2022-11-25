@@ -11,8 +11,8 @@ class User(AbstractUser):
     email = models.EmailField(unique=True, null=True)
     profile = models.ImageField(null=True,default='avatar.svg')
     
-#     USERNAME_FIELD = 'email'    
-#     REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'email'    
+    REQUIRED_FIELDS = []
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)
