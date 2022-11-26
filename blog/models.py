@@ -8,7 +8,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     name = models.CharField(max_length=200, null = True)
     email = models.EmailField(unique=True, null=True)
-    profile = models.ImageField(null=True, upload_to='/upload/' ,default='avatar.svg')
+    profile = models.ImageField(null=True, upload_to=' ' ,default='avatar.svg')
     
     USERNAME_FIELD = 'email'    
     REQUIRED_FIELDS = []
@@ -23,7 +23,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=1000)
     subtitle= models.CharField(null=True,max_length=1000)
-    image = models.ImageField(null=True,upload_to='/upload/' ,default='bg1.png')
+    image = models.ImageField(null=True,upload_to=' ' ,default='bg1.png')
     body = models.TextField(null=True)
     Links = models.TextField(null=True)
     LinkTitle = models.CharField(null=True,max_length=1000)
