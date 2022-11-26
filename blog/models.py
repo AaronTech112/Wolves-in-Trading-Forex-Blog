@@ -37,7 +37,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    avatar = models.ImageField(null=True, default='static/upload/avatar.svg')
+    avatar = models.ImageField(null=True, default='avatar.svg')
     username = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     text = models.TextField(max_length=200,null=True)
@@ -47,3 +47,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+
