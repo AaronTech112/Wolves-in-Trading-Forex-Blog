@@ -54,6 +54,7 @@ AUTH_USER_MODEL = 'blog.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -130,21 +131,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
-STATIC_URL = os.path.join(BASE_DIR,'/static/')
-MEDIA_URL = os.path.join(BASE_DIR,'/upload/')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS =(os.path.join(BASE_DIR,'static'),)
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/upload')
+MEDIA_ROOT =os.path.join(BASE_DIR,'static/upload/')
+MEDIA_URL = 'static/upload/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
+
 db_from_env = dj_database_url.config(conn_max_age=500)
+
 DATABASES['default'].update(db_from_env)
+
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode',None)
-
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-STATICFILES_DIRS =(os.path.join(BASE_DIR,'static'),)
 
 django_heroku.settings(locals())
