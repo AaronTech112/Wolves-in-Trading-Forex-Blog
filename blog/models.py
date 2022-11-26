@@ -8,14 +8,14 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     name = models.CharField(max_length=200, null = True)
     email = models.EmailField(unique=True, null=True)
-    profile = models.ImageField(null=True,default='avatar.svg')
+    profile = models.ImageField(null=True, upload_to='static/upload/' ,default='static/upload/avatar.svg')
     
     USERNAME_FIELD = 'email'    
     REQUIRED_FIELDS = []
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)
-    cat_image = models.ImageField(null=True, default='bg1.png')
+    cat_image = models.ImageField(null=True, default='static/upload/bg1.png')
 
     def __str__(self):
         return self.name     
@@ -23,7 +23,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=1000)
     subtitle= models.CharField(null=True,max_length=1000)
-    image = models.ImageField(null=True, default='bg1.png')
+    image = models.ImageField(null=True, default='static/upload/bg1.png')
     body = models.TextField(null=True)
     Links = models.TextField(null=True)
     LinkTitle = models.CharField(null=True,max_length=1000)
@@ -37,7 +37,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    avatar = models.ImageField(null=True, default='avatar.svg')
+    avatar = models.ImageField(null=True, default='static/upload/avatar.svg')
     username = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     text = models.TextField(max_length=200,null=True)
@@ -47,6 +47,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
-
-
-
